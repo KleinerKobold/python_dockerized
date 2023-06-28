@@ -3,12 +3,12 @@
 # Überprüfen, ob Docker installiert ist
 if command -v docker &> /dev/null; then
     container='docker'
-    echo "Docker gefunden."
+    echo "Docker found."
 # Überprüfen, ob Podman installiert ist
 elif command -v podman &> /dev/null; then
     container='podman'
-    echo "Podman gefunden."
+    echo "Podman found."
 else
-    echo "Weder Docker noch Podman gefunden."
+    echo "neither docker nor podmand found"
     exit 1
 fi
