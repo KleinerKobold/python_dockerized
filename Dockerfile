@@ -1,5 +1,5 @@
 FROM python:3.11
-RUN mkdir /apps && /apps/my_module
+RUN mkdir /apps && mkdir /apps/my_module
 
 COPY requirements.txt /apps/
 COPY pyproject.toml /apps/

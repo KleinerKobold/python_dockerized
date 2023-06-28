@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./detect_container.sh
+source ./detect.sh
 
 cd ..
 "$container" build -t python_docker -f Dockerfile .
