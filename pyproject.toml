@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [ "my_module" ]
+
+
+
+[project]
+
+name = "my project"
+version = "0.0.1"
+dependencies = [
+    'importlib-metadata; python_version<"3.10"',
+]
+
+
+[project.scripts]
+do_something = "my_module.__main__:main"
