@@ -1,14 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#####################
+# Shell options
+#####################
+set -o errexit   # shell will exit whenever a command has non zero return code
+set -o nounset   # undefined variables are treated as errors
+set -o pipefail  # piped commands will be considered successful if all the commands involved are executed without errors
 
-# Überprüfen, ob Docker installiert ist
+#####################
+# Main Script
+#####################
+# Check if docker is installed
 if command -v docker &> /dev/null; then
-    container='docker'
-    echo "Docker found."
-# Überprüfen, ob Podman installiert ist
+    container=$(which docker)
+    echo "Docker found: ${container}"
+# Check if podman is installed
 elif command -v podman &> /dev/null; then
-    container='podman'
-    echo "Podman found."
+    container=$(which podman)
+    echo "Podman found: ${container}"
 else
-    echo "neither docker nor podmand found"
+    echo "neither docker nor podman found"
     exit 1
 fi
