@@ -1,14 +1,26 @@
 FROM python:3.11
-RUN mkdir /apps && mkdir /apps/my_module
+# author and description label
+LABEL author="Oliver Staudt <oliver.r.staudt@gmail.com>"
+LABEL description="Just a simple demonstration how a module can be packaged \
+    and run within a docker container."
 
-COPY requirements.txt /apps/
-COPY pyproject.toml /apps/
-COPY ./my_module/* /apps/my_module/
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE=1
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED=1
 
+# Set Working Dir
+WORKDIR /app
 
-WORKDIR /apps
+# Install pip requirements
+COPY requirements.txt .
+COPY pyproject.toml .
+COPY my_module ./my_module/
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install /apps/
+RUN adduser -u 1000 --disabled-password --gecos "" app-user && chown -R app-user /app \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir .
+USER app-user
 
-ENTRYPOINT ["do_something"] 
+# run the module on start
+CMD ["python","-m","my_module"]
