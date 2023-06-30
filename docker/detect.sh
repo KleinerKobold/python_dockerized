@@ -12,11 +12,11 @@ set -o pipefail  # piped commands will be considered successful if all the comma
 # Check if docker is installed
 if command -v docker &> /dev/null; then
     container=$(which docker)
-    echo "Docker found: ${container}"
+    echo "docker cli found: ${container}"
 # Check if podman is installed
 elif command -v podman &> /dev/null; then
     container=$(which podman)
-    echo "Podman found: ${container}"
+    echo "podman cli found: ${container}"
 else
     echo "neither docker nor podman found"
     exit 1

@@ -16,4 +16,4 @@ SCRIPT_DIR=$(dirname "$0")
 # shellcheck source=docker/detect.sh
 source "${SCRIPT_DIR}/detect.sh"
 
-"$container" build -t python_docker -f "${SCRIPT_DIR}"/../Dockerfile .
+"$container" build -t python_docker -f "${SCRIPT_DIR}/../Dockerfile" .
