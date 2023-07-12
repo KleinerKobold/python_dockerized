@@ -10,10 +10,11 @@ set -o pipefail  # piped commands will be considered successful if all the comma
 #####################
 SCRIPT_DIR=$(dirname "$0")
 
+
 #####################
 # Main Script
 #####################
 # shellcheck source=docker/detect.sh
 source "${SCRIPT_DIR}/detect.sh"
-
-"$container" build -t python_docker -f "${SCRIPT_DIR}/../Dockerfile" .
+echo $container
+"$container" build -t python_docker -f "${SCRIPT_DIR}/../Dockerfile" "${SCRIPT_DIR}/.."
