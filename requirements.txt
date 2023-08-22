@@ -1,0 +1,2 @@
+# here you can fill your own requirements. 
+# The my_module is just a skeleton to show how the dockerization works.
